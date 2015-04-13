@@ -32,9 +32,9 @@ except IOError as err:
 
 MarketResults.SortPrices()
 
-
-time_range = [20]
-trigger_range = [1.5, 2.0]
+# Adjust these time ranges
+time_range = [20] # In seconds
+trigger_range = [1.5, 2.0] # Buy / Sell trigger ranges
 
 def CalculateTotalProfit(results):
 
