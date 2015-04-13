@@ -41,9 +41,9 @@ def ProfitCalculation(data,entry, trade):
 
     opening = data['opening']
     if trade[0] > 0:
-        print opening, trade, round(trade[2] - opening,1)
+        #print opening, trade, round(trade[2] - opening,1)
         return round(trade[2] - opening,1)
-    print opening, trade, round(opening - trade[2],1)
+    #print opening, trade, round(opening - trade[2],1)
     return round(opening - trade[2],1)
 
 
