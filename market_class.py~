@@ -1,0 +1,67 @@
+
+class DataDescriptor(object):
+
+   def __init__(self,label):
+  	self.label = label
+
+   def __get__(self, instance, owner): 
+	return instance.__dict__[self.label]
+
+   def __set__(self, instance, value): 
+
+	try :
+	   if float(value) < 0 :  
+		print "Invalue value: {0} entered, Cannot be less than 0".format(value)
+		return
+	except ValueError as err :
+	   print "Entered Value : {0} , cannot be converted to float".format(value)
+	   return
+
+	if not hasattr(instance,self.label):
+	     instance.__dict__[self.label] = float(value)
+	else : 
+	     print "Not Allowed to reset value of : {0}".format(self.label)
+
+class Market_Entry(object):
+
+   open = DataDescriptor("open")
+   close = DataDescriptor("close")
+   high = DataDescriptor("high")
+   low = DataDescriptor("low")
+   trading_vol = DataDescriptor("trading_vol")
+
+   def __init__(self,identifier,data):
+
+ 	self.identity = identifier
+	self.date = data.date
+	self.open = data.open
+	self.close = data.closing
+	self.high = data.high
+	self.low = data.low
+	self.trading_vol = data.trading_vol
+        
+        self._zerohigh = None
+	self._zerolow = None
+	self._zeroclose = None
+	self._outcome = None
+	self.DoCalculation() 
+	
+
+   def DoCalculation(self): 
+
+	self._zerohigh = self.open - self.high
+	self._zerolow = self.open - self.low
+	self._zeroclose = self.open - self.close
+
+	self.CheckOutcome()
+
+   def PrintCalculation(self):
+
+	print  " Open_vs_Low : {ovl} | Open_vs_High : {ovh} | Open_vs_Close : {ovc}".format(ovl=self._zerolow,ovh=self._zerohigh,ovc=self._zeroclose)
+
+
+   def CheckOutcome(self):
+
+	if _	
+
+     
